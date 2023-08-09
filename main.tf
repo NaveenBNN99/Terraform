@@ -1,12 +1,12 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
+provider "aws" {
+  region = var.region
 }
-//12
-resource "aws_instance" "" {
-  ami           = var.ami
-  instance_type = var.instance_type
+#1
+resource "aws_instance" "ex" {
+  ami           = "ami-0f34c5ae932e6f0e4"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "terraform-ec2-instance"
+    Environment = "Testing"
+  }
 }
